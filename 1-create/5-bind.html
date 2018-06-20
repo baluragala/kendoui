@@ -23,15 +23,25 @@
 </head>
 
 <body>
-    <div id="myView"></div>
-  <!-- HTML in a script element -->
-  <script id="myViewHTML">
-      <input data-role="datepicker"/>
-  </script>
+  <div id="view">
+    <input data-role="slider" data-min="0" data-max="50" data-small-step="5" data-large-step="10" data-bind="value: selectedNumber,events: { change: onChange }">
+  </div>
+  <h5>results:
+    <span>10</span>
+  </h5>
 
   <script>
-      var myView = new kendo.View('myViewHTML'); //use HTML from myView Template
-      myView.render('#myView'); //render view to #myViewContainer
+    //create viewModel
+    var viewModel = kendo.observable({
+      selectedNumber: 10,
+      onChange: function () {
+        $('h5 span').text(this.get('selectedNumber'));
+      }
+    });
+
+    //bind viewModel to view
+    var a = kendo.bind($('#view'), viewModel);
+    //console.log(a);
   </script>
 </body>
 

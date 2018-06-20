@@ -26,8 +26,8 @@
   <input id="datepicker" />
   <script>
     $(function () {
-      // Initialize the Kendo UI DatePicker by calling the kendoDatePicker jQuery plugin
-      $("#datepicker").kendoDatePicker();
+      var datePicker = new kendo.ui.DatePicker("#datepicker")
+      //console.log(datePicker);
     });
   </script>
 </body>

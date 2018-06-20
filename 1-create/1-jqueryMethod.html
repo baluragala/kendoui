@@ -23,11 +23,12 @@
 </head>
 
 <body>
-  <input id="date" data-role="datepicker"></input>
+  <input id="datepicker" />
   <script>
     $(function () {
-      var datePicker = kendo.init($("#date"));
-      console.log(datePicker);
+      // Initialize the Kendo UI DatePicker by calling the kendoDatePicker jQuery plugin
+      var e = $("#datepicker").kendoDatePicker();
+      //console.log(e.getKendoDatePicker())
     });
   </script>
 </body>

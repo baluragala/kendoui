@@ -23,26 +23,29 @@
 </head>
 
 <body>
-  <div id="view">
-    <input data-role="slider" data-min="0" data-max="50" data-small-step="5" data-large-step="10" data-bind="value: selectedNumber,events: { change: onChange }">
+  <div id="calendar"></div>
+
+  <div id="instatiateAnythingInThisDiv">
+    <input id="autoComplete" data-role="autocomplete" data-source="['Ant', 'Antilope', 'Badger', 'Beaver', 'Bird']" placeholder="start typing e.g. 'a'"
+    />
   </div>
-  <h5>results:
-    <span>10</span>
-  </h5>
 
   <script>
-    //create viewModel
-    var viewModel = kendo.observable({
-      selectedNumber: 10,
-      onChange: function () {
-        $('h5 span').text(this.get('selectedNumber'));
-      }
-    });
+    //create calendar and auto complete widgets
+    kendo.bind($('#instatiateAnythingInThisDiv')); //from markup
+    var $cal = $('#calendar').kendoCalendar(); //using jQuery method
 
-    //bind viewModel to view
-    kendo.bind($('#view'), viewModel);
+    //get instance/reference to calendar widget 
+    //using jQuery method .getKendoNameOfWidget() or .data('kendoNameOfWidget')
+    var calInstance = $cal.getKendoCalendar();
 
+    //get instance/reference to auto complete widget
+    var autoCompleteInstance = kendo.widgetInstance($('#autoComplete'));
+
+    console.log(calInstance);
+    console.log(autoCompleteInstance);
   </script>
+
 </body>
 
 </html>
